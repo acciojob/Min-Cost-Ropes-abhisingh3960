@@ -5,8 +5,8 @@ function mincost(arr)
 	let totalCost = 0;
 	while (arr.length > 1) {
 		arr.sort((a , b) => a-b);
-		let largest = arr.unshift();
-		let seclargest = arr.unshift();
+		let largest = arr.shift();
+		let seclargest = arr.shift();
 		let mincost = largest+seclargest;
 		arr.push(mincost);
 		totalCost = totalCost+mincost;
