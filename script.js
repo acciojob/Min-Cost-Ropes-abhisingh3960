@@ -2,28 +2,17 @@ function mincost(arr)
 { 
 //write your code here
 // return the min cost
-	let heap = new MinPriorityQueue();
-    
-    for (let length of arr) {
-        heap.enqueue(length);
-    }
-
-    let totalCost = 0;
-
-    while (heap.size() > 1) {
-        
-        let first = heap.dequeue().element;
-        let second = heap.dequeue().element;
-
-        let cost = first + second;
-
-        totalCost += cost;
-
-        heap.enqueue(cost);
-    }
-
-    return totalCost;
-  
+	let totalCost = 0;
+	while (arr.length > 1) {
+		arr.sort((a , b) => a-b);
+		let largest = arr.unshift();
+		let seclargest = arr.unshift();
+		let mincost = largest+seclargest;
+		arr.push(mincost);
+		totalCost = totalCost+mincost;
+		
+	}
+	return totalCost;
 }
 
 module.exports=mincost;
